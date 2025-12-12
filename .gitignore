@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Configuration (local changes not tracked)
+config.py
+
+# Manim output
+media/
+*.mp4
+*.mov
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.venv
+venv/
+env/
+
+# Temporary files
+*.tmp
+*.temp
+temp_*.pnm
