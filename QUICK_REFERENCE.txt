@@ -1,0 +1,132 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                  FOURIER DRAWING QUICK REFERENCE                     ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ BASIC WORKFLOW                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+
+  1. Edit config.py       → Set IMAGE_PATH and parameters
+  2. Run animation        → manim -pql fourier_drawing.py FourierDrawing
+  3. Find video          → media/videos/fourier_drawing/480p15/
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ QUALITY FLAGS                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+
+  -ql    Low quality (480p)          Fast preview
+  -qm    Medium quality (720p)       Balanced
+  -qh    High quality (1080p)        Production
+  -qk    4K quality (2160p)          Best quality
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ KEY PARAMETERS (config.py)                                          │
+└─────────────────────────────────────────────────────────────────────┘
+
+  IMAGE_PATH            Path to your image file (SVG/PNG/JPG)
+  N_VECTORS            Number of epicycles (100-1000)
+  NUM_SAMPLES          Sampling resolution (1000-20000)
+  ANIMATION_DURATION   Duration in seconds (20-200)
+
+  DRAW_CIRCLES         Show rotating circles (True/False)
+  DRAW_ARROWS          Show rotating vectors (True/False)
+  SHOW_TRACER_DOT      Show drawing point (True/False)
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ QUICK PRESETS                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+
+  FAST TEST           N_VECTORS=50,   NUM_SAMPLES=1000,   DURATION=10s
+  PREVIEW             N_VECTORS=150,  NUM_SAMPLES=5000,   DURATION=30s
+  BALANCED ⭐         N_VECTORS=300,  NUM_SAMPLES=10000,  DURATION=50s
+  HIGH DETAIL         N_VECTORS=1000, NUM_SAMPLES=20000,  DURATION=100s
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ COMMON COMMANDS                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+  # Quick preview
+  manim -pql fourier_drawing.py FourierDrawing
+
+  # High quality render
+  manim -pqh fourier_drawing.py FourierDrawing
+
+  # Using CLI utility
+  python run.py images/my_image.svg --quality high
+
+  # Convert image first
+  python helpers/vectorize.py images/photo.jpg images/photo.svg
+
+  # Check setup
+  python setup.py
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ FILE FORMATS                                                        │
+└─────────────────────────────────────────────────────────────────────┘
+
+  SVG  ✓ Best quality, recommended for all geometric shapes
+  PNG  ✓ Edge detection, works best with high contrast images
+  JPG  ✓ Automatic processing, convert to SVG for better results
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ TROUBLESHOOTING                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+  Problem                  Solution
+  ────────────────────────────────────────────────────────────────
+  Too slow                 Reduce N_VECTORS and NUM_SAMPLES
+  Not detailed enough      Increase N_VECTORS and NUM_SAMPLES
+  Image won't load         Check file path, format (.svg/.png/.jpg)
+  Animation cuts off       Increase ANIMATION_DURATION in config.py
+  Circles are wrong color  Set CIRCLE_COLOR in config.py
+  No circles visible       Set DRAW_CIRCLES = True
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ PROJECT STRUCTURE                                                   │
+└─────────────────────────────────────────────────────────────────────┘
+
+  📂 D:/Python/Manim/
+  ├── 📄 config.py              ← EDIT THIS for settings
+  ├── 📄 fourier_drawing.py     ← Main script
+  ├── 📄 run.py                 ← CLI utility
+  ├── 📄 setup.py               ← Project setup
+  ├── 📂 helpers/
+  │   ├── fourier_calc.py       ← Core algorithms
+  │   ├── complex_to_np.py      ← Utilities
+  │   └── vectorize.py          ← Image conversion
+  ├── 📂 images/                ← PUT YOUR IMAGES HERE
+  └── 📂 media/                 ← OUTPUT VIDEOS HERE
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ HELP & DOCUMENTATION                                                │
+└─────────────────────────────────────────────────────────────────────┘
+
+  README.md                  Full documentation
+  EXAMPLES.md                Pre-configured examples
+  OPTIMIZATION_SUMMARY.md    What changed and why
+  config.py                  All available settings
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ TYPICAL WORKFLOW EXAMPLE                                            │
+└─────────────────────────────────────────────────────────────────────┘
+
+  1. Copy your image:
+     $ copy my_drawing.svg images/
+
+  2. Edit config.py:
+     IMAGE_PATH = 'images/my_drawing.svg'
+     N_VECTORS = 300
+     ANIMATION_DURATION = 50.0
+
+  3. Test quickly:
+     $ manim -pql fourier_drawing.py FourierDrawing
+
+  4. Looks good? Render in high quality:
+     $ manim -pqh fourier_drawing.py FourierDrawing
+
+  5. Find your video:
+     $ media/videos/fourier_drawing/1080p60/FourierDrawing.mp4
+
+╔══════════════════════════════════════════════════════════════════════╗
+║  Need help? Check README.md or run: python setup.py                 ║
+╚══════════════════════════════════════════════════════════════════════╝
